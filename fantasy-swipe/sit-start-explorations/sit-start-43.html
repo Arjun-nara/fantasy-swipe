@@ -883,7 +883,25 @@ let hintShown = false; // swipe hint overlay only shows on the very first card
 
 const espnHeadshot = id   => `https://a.espncdn.com/i/headshots/nfl/players/full/${id}.png`;
 const espnLogo     = abbr => `https://a.espncdn.com/i/teamlogos/nfl/500/${abbr.toLowerCase()}.png`;
-const askerAvatar  = name => `https://i.pravatar.cc/64?u=${encodeURIComponent(name)}`;
+const ASKER_AVATARS = {
+  Michelle: 'https://randomuser.me/api/portraits/women/44.jpg',
+  Sarah:    'https://randomuser.me/api/portraits/women/68.jpg',
+  Taylor:   'https://randomuser.me/api/portraits/women/33.jpg',
+  Alex:     'https://randomuser.me/api/portraits/men/52.jpg',
+  Casey:    'https://randomuser.me/api/portraits/women/21.jpg',
+  Nina:     'https://randomuser.me/api/portraits/women/57.jpg',
+  Priya:    'https://randomuser.me/api/portraits/women/76.jpg',
+  Bria:     'https://randomuser.me/api/portraits/women/14.jpg',
+  Simone:   'https://randomuser.me/api/portraits/women/62.jpg',
+  Jake:     'https://randomuser.me/api/portraits/men/36.jpg',
+  Chris:    'https://randomuser.me/api/portraits/men/12.jpg',
+  Jordan:   'https://randomuser.me/api/portraits/men/47.jpg',
+  Marcus:   'https://randomuser.me/api/portraits/men/83.jpg',
+  Derek:    'https://randomuser.me/api/portraits/men/29.jpg',
+  Tom:      'https://randomuser.me/api/portraits/men/64.jpg',
+  Raj:      'https://randomuser.me/api/portraits/men/91.jpg',
+};
+const askerAvatar = name => ASKER_AVATARS[name] || `https://randomuser.me/api/portraits/men/${name.charCodeAt(0) % 99}.jpg`;
 function abbr(p) { return `${p.name[0]}. ${p.last}`; }
 
 function darken(hex, f) {
