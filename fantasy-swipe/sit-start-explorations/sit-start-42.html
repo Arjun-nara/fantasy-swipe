@@ -1169,7 +1169,7 @@ function attachDrag(card) {
       hintShown = true;
       overlay.classList.add('gone');
       setTimeout(() => overlay.remove(), 300);
-    }, 3000);
+    }, 4000);
   }
   function dismissHint() {
     if (!overlay) return;
@@ -1281,7 +1281,7 @@ function commitSwipe(dir) {
       rm.style.opacity = '0';
       setTimeout(() => { rm.remove(); renderStack(); }, 160);
     }
-    const autoTimer = setTimeout(dismissMoment, 4000);
+    const autoTimer = setTimeout(dismissMoment, 3500);
     rm.addEventListener('click', dismissMoment, { once: true });
   }, 380);
 }
