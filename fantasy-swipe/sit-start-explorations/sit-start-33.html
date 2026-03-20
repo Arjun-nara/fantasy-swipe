@@ -25,18 +25,12 @@
 
     html, body { height: 100%; background: var(--bg); font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
 
-    /* ══════════════════════════════════════
-       STATUS BAR
-    ══════════════════════════════════════ */
     .status-bar {
       background: #fff; max-width: 430px; margin: 0 auto;
       display: flex; align-items: center; justify-content: space-between;
       padding: 14px 18px 6px; font-size: 13px; font-weight: 700;
     }
 
-    /* ══════════════════════════════════════
-       HEADER — Figma style: avatar + centered logo + Play
-    ══════════════════════════════════════ */
     .header {
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -48,27 +42,21 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 8px 16px 8px; height: 54px; position: relative;
     }
-    /* Avatar — left side, 44px circle */
     .header-avatar {
       width: 44px; height: 44px; border-radius: 50%;
       background: linear-gradient(135deg, #7d2eff, #5b0dcc);
       display: flex; align-items: center; justify-content: center;
       font-size: 18px; font-weight: 900; color: #fff; flex-shrink: 0;
-      box-shadow: 0 1px 4px rgba(125,46,255,0.3);
-      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(125,46,255,0.3); overflow: hidden;
     }
-    .header-avatar img { width: 44px; height: 44px; object-fit: cover; border-radius: 50%; }
-    /* Logo — centered absolutely */
     .header-logo {
       position: absolute; left: 50%; top: 50%;
       transform: translate(-50%, -50%);
-      display: flex; align-items: center; gap: 2px;
-      pointer-events: none;
+      display: flex; align-items: center; gap: 2px; pointer-events: none;
     }
     .logo-mark { font-size: 20px; font-weight: 900; color: var(--purple); letter-spacing: -0.5px; }
     .logo-slash { color: #c0c8d8; font-weight: 300; font-size: 18px; }
     .logo-word { font-size: 20px; font-weight: 900; color: var(--purple); letter-spacing: -0.3px; }
-    /* Play button — liquid glass style */
     .play-btn {
       background: rgba(125, 46, 255, 0.88);
       backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
@@ -76,9 +64,7 @@
       border-radius: 999px; font-size: 16px; font-weight: 700;
       cursor: pointer; flex-shrink: 0;
       box-shadow: 0 1px 8px rgba(125,46,255,0.35), 0 0 0 1px rgba(255,255,255,0.15) inset;
-      letter-spacing: 0.05px;
     }
-    /* Nav tabs */
     .nav-tabs {
       display: flex; gap: 4px; padding: 0 16px 0;
       overflow-x: auto; scrollbar-width: none;
@@ -92,18 +78,12 @@
     }
     .tab.active { color: var(--purple); border-bottom-color: var(--purple); }
 
-    /* ══════════════════════════════════════
-       FEED
-    ══════════════════════════════════════ */
     .feed {
       max-width: 430px; margin: 0 auto;
       overflow-y: auto; height: calc(100dvh - 122px);
       padding-bottom: 80px;
     }
 
-    /* ══════════════════════════════════════
-       PROMO ROW
-    ══════════════════════════════════════ */
     .promo-row {
       display: flex; gap: 10px; padding: 12px 14px;
       overflow-x: auto; scrollbar-width: none;
@@ -113,8 +93,7 @@
       flex-shrink: 0; width: 181px; height: 74px; border-radius: 12px;
       padding: 10px 12px; display: flex; flex-direction: column;
       justify-content: space-between; overflow: hidden;
-      background: linear-gradient(135deg, #5b0dcc, var(--purple));
-      position: relative;
+      background: linear-gradient(135deg, #5b0dcc, var(--purple)); position: relative;
     }
     .promo-card::after {
       content: ''; position: absolute; right: -20px; top: -20px;
@@ -124,14 +103,11 @@
     .promo-lbl { font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.65); letter-spacing: 0.6px; text-transform: uppercase; }
     .promo-title { font-size: 13px; font-weight: 800; color: #fff; line-height: 1.2; }
     .promo-btn {
-      background: rgba(255,255,255,0.18); color: #fff; border: none;
+      background: rgba(255,255,255,0.18); color: #fff; border: 1px solid rgba(255,255,255,0.25);
       padding: 5px 12px; border-radius: 20px; font-size: 10px; font-weight: 700;
-      cursor: pointer; align-self: flex-start; border: 1px solid rgba(255,255,255,0.25);
+      cursor: pointer; align-self: flex-start;
     }
 
-    /* ══════════════════════════════════════
-       SECTION HEADER
-    ══════════════════════════════════════ */
     .section-hdr {
       padding: 12px 14px 6px;
       display: flex; align-items: center; justify-content: space-between;
@@ -144,19 +120,12 @@
     }
     .section-link { font-size: 13px; font-weight: 600; color: var(--purple); }
 
-    /* ══════════════════════════════════════
-       MY TEAMS CARD — Figma layout
-    ══════════════════════════════════════ */
     .my-teams-card {
       margin: 0 14px 4px; background: var(--card);
       border-radius: 14px; border: 1px solid rgba(0,0,0,0.07);
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,8,21,0.06);
+      overflow: hidden; box-shadow: 0 1px 4px rgba(0,8,21,0.06);
     }
-    .mt-league-row {
-      padding: 10px 14px 8px; display: flex; align-items: center;
-      gap: 6px; border-bottom: 1px solid rgba(0,0,0,0.07);
-    }
+    .mt-league-row { padding: 10px 14px 8px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid rgba(0,0,0,0.07); }
     .mt-league-icon { font-size: 15px; }
     .mt-league-name { font-size: 11px; font-weight: 600; color: var(--dim); }
     .mt-main { padding: 10px 14px 4px; display: flex; align-items: flex-start; justify-content: space-between; }
@@ -164,15 +133,8 @@
     .mt-side.right { align-items: flex-end; }
     .mt-team-name { font-size: 10px; font-weight: 700; color: var(--dim); text-transform: uppercase; letter-spacing: 0.3px; }
     .mt-score-row { display: flex; align-items: center; gap: 8px; }
-    .mt-avatar {
-      width: 48px; height: 48px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--purple), var(--purple-light));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px; box-shadow: 0 2px 8px rgba(125,46,255,0.2);
-    }
-    .mt-score {
-      font-size: 36px; font-weight: 900; color: var(--text); letter-spacing: -1px; line-height: 1;
-    }
+    .mt-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--purple), var(--purple-light)); display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 2px 8px rgba(125,46,255,0.2); }
+    .mt-score { font-size: 36px; font-weight: 900; color: var(--text); letter-spacing: -1px; line-height: 1; }
     .mt-score.leading { color: var(--purple); }
     .mt-score-sub { font-size: 10px; font-weight: 600; color: var(--dim); }
     .mt-vs { font-size: 11px; font-weight: 600; color: var(--dim); align-self: center; }
@@ -186,27 +148,20 @@
     .mt-tab { flex: 1; text-align: center; padding: 10px 0; font-size: 12px; font-weight: 700; color: var(--dim); cursor: pointer; }
     .mt-tab.active { color: var(--purple); border-bottom: 2px solid var(--purple); }
 
-    /* ══════════════════════════════════════
-       COMMUNITY POLL MODULE
-    ══════════════════════════════════════ */
+    /* ══ POLL MODULE ══ */
     .poll-module {
       margin: 8px 14px;
       background: #eef2fb;
-      border-radius: 12px;
-      overflow: hidden;
+      border-radius: 12px; overflow: hidden;
       box-shadow: 0 1px 4px 2px rgba(0,8,21,0.05);
     }
-
-    /* Module header */
     .poll-hdr {
-      background: #fff;
-      padding: 12px 12px 8px;
+      background: #fff; padding: 12px 12px 8px;
       display: flex; align-items: center; justify-content: space-between;
       border-bottom: 1px solid rgba(0,0,0,0.08);
       border-radius: 12px 12px 0 0;
     }
     .poll-hdr-left { display: flex; align-items: center; gap: 6px; }
-    .poll-icon { font-size: 16px; line-height: 1; }
     .poll-title { font-size: 14px; font-weight: 700; color: var(--text); }
     .add-poll-btn {
       background: linear-gradient(161deg, #e24d9c 0%, #7d2eff 100%);
@@ -216,30 +171,12 @@
     }
     .add-poll-icon { font-size: 10px; font-weight: 900; }
 
-    /* Asker row — outside the card, inside the module */
-    .poll-asker-row {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 8px 10px 6px;
-    }
-    .poll-asker-left { display: flex; align-items: center; gap: 6px; }
-    .poll-asker-avatar {
-      width: 24px; height: 24px; border-radius: 50%;
-      background: #c7cdd2; display: flex; align-items: center; justify-content: center;
-      font-size: 10px; font-weight: 800; color: #fff; overflow: hidden; flex-shrink: 0;
-    }
-    .poll-asker-name { font-size: 13px; font-weight: 500; color: var(--text); }
-    .poll-asker-meta { display: flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 500; color: rgba(0,0,0,0.56); }
-    .poll-asker-dot { color: #b5bed3; font-size: 11px; }
-
-    /* Card stack wrapper — fixed height + overflow hidden so back card peeks
-       stay contained and never push the hint text */
+    /* Card stack */
     .stack-wrap {
       position: relative; height: 290px;
-      margin: 8px 10px 0;
-      overflow: hidden;
+      margin: 8px 10px 0; overflow: hidden;
     }
 
-    /* Swipe cards — absolute, full width, translateY-only depth */
     .swipe-card {
       position: absolute; top: 0; width: 100%;
       border-radius: 8px; overflow: hidden;
@@ -247,108 +184,49 @@
       box-shadow: 0 0 1px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.1);
     }
     .swipe-card:active { cursor: grabbing; }
-    .swipe-card.back-1 {
-      transform: translateY(12px); z-index: 1;
-      pointer-events: none;
-      transition: transform 0.3s cubic-bezier(0.34,1.2,0.64,1);
-    }
-    .swipe-card.back-2 {
-      transform: translateY(22px); z-index: 0;
-      pointer-events: none;
-      transition: transform 0.3s cubic-bezier(0.34,1.2,0.64,1);
-    }
-    .swipe-card.front { z-index: 5; }
-    .swipe-card.fly-out {
-      transition: transform 0.42s cubic-bezier(0.4,0,0.2,1), opacity 0.38s ease;
-      pointer-events: none;
-    }
+    .swipe-card.back-1 { transform: translateY(12px); z-index: 1; pointer-events: none; transition: transform 0.3s cubic-bezier(0.34,1.2,0.64,1); }
+    .swipe-card.back-2 { transform: translateY(22px); z-index: 0; pointer-events: none; transition: transform 0.3s cubic-bezier(0.34,1.2,0.64,1); }
+    .swipe-card.front  { z-index: 5; }
+    .swipe-card.fly-out { transition: transform 0.42s cubic-bezier(0.4,0,0.2,1), opacity 0.38s ease; pointer-events: none; }
 
     /* Card asker strip */
-    .card-asker-strip {
-      background: #fff;
-      height: 50px; display: flex; align-items: center;
-      justify-content: space-between; padding: 0 8px;
-    }
+    .card-asker-strip { background: #fff; height: 50px; display: flex; align-items: center; justify-content: space-between; padding: 0 8px; }
     .card-asker-info { display: flex; align-items: center; gap: 6px; min-width: 0; flex: 1; }
-    .card-asker-avatar {
-      width: 24px; height: 24px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 10px; font-weight: 800; flex-shrink: 0;
-      background: #fff; overflow: hidden;
-    }
-    .card-asker-avatar-inner {
-      width: 24px; height: 24px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 11px; font-weight: 800; color: #fff;
-    }
+    .card-asker-avatar { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0; background: #fff; overflow: hidden; }
+    .card-asker-avatar-inner { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; color: #fff; }
     .card-asker-labels { display: flex; flex-direction: column; }
     .card-asker-name { font-size: 13px; font-weight: 800; color: #000; line-height: 1.2; }
     .card-asker-meta { font-size: 12px; font-weight: 500; color: #252932; display: flex; align-items: center; gap: 3px; }
-    /* Progress ring counter */
-    .card-progress-ring {
-      position: relative; width: 28px; height: 28px; flex-shrink: 0;
-    }
+    .card-progress-ring { position: relative; width: 28px; height: 28px; flex-shrink: 0; }
     .card-progress-ring svg { position: absolute; top: 0; left: 0; }
-    .ring-num {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      font-size: 10px; font-weight: 800; color: #252932; line-height: 1;
-    }
+    .ring-num { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 10px; font-weight: 800; color: #252932; line-height: 1; }
 
-    /* Card body — player halves */
+    /* Card body */
     .card-body { display: flex; height: 182px; position: relative; background: #fff; overflow: hidden; }
     .player-half { flex: 1; position: relative; overflow: hidden; }
     .half-bg { position: absolute; inset: 0; z-index: 0; }
-
-    .half-logo {
-      position: absolute; z-index: 2; pointer-events: none;
-      width: 75px; height: 75px; object-fit: contain;
-      opacity: 0.5; bottom: 0;
-    }
+    .half-logo { position: absolute; z-index: 2; pointer-events: none; width: 75px; height: 75px; object-fit: contain; opacity: 0.5; bottom: 0; }
     .lh .half-logo { left: 8px; }
     .rh .half-logo { right: 8px; }
-
-    .p-photo {
-      position: absolute; bottom: 0;
-      width: 115px; height: 152px;
-      object-fit: cover; object-position: top center;
-      filter: drop-shadow(0 2px 10px rgba(0,0,0,0.45)); z-index: 3;
-    }
+    .p-photo { position: absolute; bottom: 0; width: 115px; height: 152px; object-fit: cover; object-position: top center; filter: drop-shadow(0 2px 10px rgba(0,0,0,0.45)); z-index: 3; }
     .lh .p-photo { right: 0; }
     .rh .p-photo { left: 0; }
     .p-emoji-fb { display: none; position: absolute; bottom: 4px; font-size: 64px; z-index: 3; }
     .lh .p-emoji-fb { right: 4px; }
     .rh .p-emoji-fb { left: 4px; }
-
     .p-info { position: absolute; top: 0; z-index: 4; padding: 8px 8px 0; max-width: 62%; }
     .lh .p-info { left: 0; text-align: left; }
     .rh .p-info { right: 0; text-align: right; }
-
     .p-name { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.1; white-space: nowrap; }
-
     .p-pos-row { display: flex; align-items: center; gap: 3px; margin-top: 4px; }
     .lh .p-pos-row { justify-content: flex-start; }
     .rh .p-pos-row { justify-content: flex-end; }
-
-    .pos-chip {
-      background: var(--blue-badge); color: #fff;
-      padding: 1px 5px; border-radius: 2px;
-      font-size: 10px; font-weight: 700; height: 14px;
-      display: flex; align-items: center;
-    }
-    .status-badge {
-      padding: 1px 4px; border-radius: 2px;
-      font-size: 10px; font-weight: 700; height: 14px;
-      display: flex; align-items: center;
-    }
+    .pos-chip { background: var(--blue-badge); color: #fff; padding: 1px 5px; border-radius: 2px; font-size: 10px; font-weight: 700; height: 14px; display: flex; align-items: center; }
+    .status-badge { padding: 1px 4px; border-radius: 2px; font-size: 10px; font-weight: 700; height: 14px; display: flex; align-items: center; }
     .status-badge.gtd { background: #fff2f4; color: #c11629; border: 0.4px solid #ffd4da; }
     .status-badge.q   { background: #fffbeb; color: #b45309; border: 0.4px solid #fde68a; }
     .status-badge.out { background: #fff2f4; color: #c11629; border: 0.4px solid #ffd4da; }
-
-    .team-matchup {
-      font-size: 10px; color: rgba(255,255,255,0.85); font-weight: 600;
-      display: flex; align-items: center; gap: 3px; margin-top: 5px;
-      white-space: nowrap; overflow: hidden;
-    }
+    .team-matchup { font-size: 10px; color: rgba(255,255,255,0.85); font-weight: 600; display: flex; align-items: center; gap: 3px; margin-top: 5px; white-space: nowrap; overflow: hidden; }
     .lh .team-matchup { justify-content: flex-start; }
     .rh .team-matchup { justify-content: flex-end; }
     .matchup-logo { width: 20px; height: 20px; object-fit: contain; flex-shrink: 0; }
@@ -360,7 +238,7 @@
     .proj-num { font-size: 16px; font-weight: 700; color: #fff; line-height: 1; }
     .proj-sub { font-size: 10px; color: #b5bed3; font-weight: 600; }
 
-    /* OR circle */
+    /* OR circle + pulse ring */
     .or-circle {
       position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
       width: 24px; height: 24px; border-radius: 50%;
@@ -370,107 +248,78 @@
       z-index: 20; pointer-events: none; transition: opacity 0.15s ease;
       padding-bottom: 1px;
     }
+    .or-circle::after {
+      content: ''; position: absolute; inset: -5px; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.18);
+      animation: orPulse 2.4s ease-in-out infinite;
+    }
+    @keyframes orPulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50%       { opacity: 0; transform: scale(1.5); }
+    }
+
+    /* ── SWIPE HINT OVERLAY (dark pill, first card only) ── */
+    .swipe-hint-overlay {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 25; pointer-events: none;
+      background: rgba(0,0,0,0.58);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      border-radius: 28px;
+      padding: 9px 20px;
+      display: flex; align-items: center; gap: 10px;
+      opacity: 1;
+      transition: opacity 0.28s ease;
+      white-space: nowrap;
+    }
+    .swipe-hint-overlay.gone { opacity: 0; }
+    .hint-label { font-size: 12px; font-weight: 700; color: #fff; letter-spacing: 0.3px; }
+    .hint-finger-l { font-size: 16px; display: inline-block; animation: nudgeLeft  1.5s ease-in-out infinite; }
+    .hint-finger-r { font-size: 16px; display: inline-block; animation: nudgeRight 1.5s ease-in-out infinite; }
+    @keyframes nudgeLeft  { 0%,100% { transform: translateX(0); } 45% { transform: translateX(-7px); } }
+    @keyframes nudgeRight { 0%,100% { transform: translateX(0); } 45% { transform: translateX(7px);  } }
 
     /* Expand overlay */
-    .expand-overlay {
-      position: absolute; inset: 0; opacity: 0;
-      pointer-events: none; z-index: 15;
-      display: flex; align-items: flex-end; justify-content: center; overflow: hidden;
-    }
+    .expand-overlay { position: absolute; inset: 0; opacity: 0; pointer-events: none; z-index: 15; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
     .exp-bg { position: absolute; inset: 0; }
-    .exp-logo {
-      position: absolute; width: 140px; height: 140px; object-fit: contain;
-      top: 50%; left: 50%; transform: translate(-50%, -50%);
-      opacity: 0.26; filter: brightness(1.4) saturate(0.7); pointer-events: none;
-    }
-    .exp-photo {
-      position: absolute; bottom: 0; width: 220px; height: 182px;
-      object-fit: cover; object-position: top center;
-      transform: scale(0.82); transform-origin: bottom center;
-      filter: drop-shadow(0 -2px 18px rgba(0,0,0,0.45)); z-index: 2;
-    }
+    .exp-logo { position: absolute; width: 140px; height: 140px; object-fit: contain; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.26; filter: brightness(1.4) saturate(0.7); pointer-events: none; }
+    .exp-photo { position: absolute; bottom: 0; width: 220px; height: 182px; object-fit: cover; object-position: top center; transform: scale(0.82); transform-origin: bottom center; filter: drop-shadow(0 -2px 18px rgba(0,0,0,0.45)); z-index: 2; }
     .exp-emoji { display: none; position: absolute; bottom: 4px; font-size: 80px; z-index: 2; }
 
     /* Chin bar */
-    .card-btm {
-      background: #fff; height: 36px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 8px;
-    }
-    .swipe-hint-left, .swipe-hint-right {
-      display: flex; align-items: center; gap: 2px;
-      font-size: 10px; font-weight: 500; color: #61697c; flex: 1;
-    }
+    .card-btm { background: #fff; height: 36px; display: flex; align-items: center; justify-content: space-between; padding: 0 8px; }
+    .swipe-hint-left, .swipe-hint-right { display: flex; align-items: center; gap: 2px; font-size: 10px; font-weight: 500; color: #61697c; flex: 1; }
     .swipe-hint-left { justify-content: flex-start; }
     .swipe-hint-right { justify-content: flex-end; }
     .chin-chevron { font-size: 11px; color: #61697c; line-height: 1; }
-    .vote-center {
-      display: flex; align-items: center; gap: 4px;
-      font-size: 12px; font-weight: 700; color: #252932;
-      flex: 1; justify-content: center;
-    }
+    .vote-center { display: flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 700; color: #252932; flex: 1; justify-content: center; }
     .vote-num { transition: transform 0.12s ease, color 0.12s ease; display: inline-block; }
     .vote-num.bump { transform: scale(1.15); color: var(--purple); }
 
-
-    /* Fixed area below card — consistent height, never jumps */
+    /* Poll below — fixed height, never jumps */
     .poll-below { height: 96px; flex-shrink: 0; position: relative; }
-
-    /* Hint text — centred in the fixed area pre-swipe */
-    .swipe-hint-text {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 500; color: var(--dim);
-      transition: opacity 0.3s ease; pointer-events: none;
-    }
+    .swipe-hint-text { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: var(--dim); transition: opacity 0.3s ease; pointer-events: none; }
     .swipe-hint-text.hidden { opacity: 0; }
 
-    /* ── RESULT BAR ── fades in after first swipe, stays visible */
-    .result-bar-wrap {
-      position: absolute; inset: 0;
-      opacity: 0; transition: opacity 0.4s ease;
-      pointer-events: none;
-    }
+    /* Result bar */
+    .result-bar-wrap { position: absolute; inset: 0; opacity: 0; transition: opacity 0.4s ease; pointer-events: none; }
     .result-bar-wrap.visible { opacity: 1; pointer-events: auto; }
-    .result-bar-inner { padding: 6px 10px 8px; position: relative; }
-
-    /* ── FANTASY+ LOCK OVERLAY ── */
-    .rbar-lock {
-      position: absolute; inset: 0;
-      border-radius: 8px;
-      backdrop-filter: blur(7px);
-      -webkit-backdrop-filter: blur(7px);
-      background: rgba(255,255,255,0.55);
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      cursor: pointer;
-    }
-    .rbar-lock-badge {
-      display: flex; align-items: center; gap: 6px;
-      background: var(--purple); border-radius: 20px;
-      padding: 6px 12px 6px 8px;
-    }
-    .rbar-lock-icon { font-size: 13px; line-height: 1; }
-    .rbar-lock-label { font-size: 12px; font-weight: 800; color: #fff; letter-spacing: 0.2px; }
-    .rbar-lock-sub { font-size: 11px; font-weight: 600; color: #5B0DCC; }
-    /* "Previous pick" label above bar */
-    .rbar-prev-label { font-size: 10px; font-weight: 500; color: var(--dim); text-align: center; margin-bottom: 4px; }
-    /* Bar — player names live inside the coloured halves */
-    .rbar-split { display: flex; height: 40px; border-radius: 8px; overflow: hidden; margin-bottom: 5px; }
-    .rbar-left  { display: flex; align-items: center; justify-content: space-between; padding: 0 10px; flex-shrink: 0; transition: width 0.55s cubic-bezier(0.34,1.2,0.64,1), background-color 0.4s ease; min-width: 44px; }
-    .rbar-right { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 0 10px; transition: background-color 0.4s ease; }
-    .rbar-player-name { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.9); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 52px; }
-    .rbar-pct-inside { font-size: 14px; font-weight: 900; color: #fff; line-height: 1; flex-shrink: 0; }
-    .rbar-pct-dim { color: rgba(255,255,255,0.7); }
-    /* Footer */
-    .rbar-footer { display: flex; justify-content: space-between; align-items: center; }
+    .result-bar-inner { padding: 8px 12px 8px; }
+    .rbar-prev-label { font-size: 10px; font-weight: 500; color: var(--dim); text-align: center; margin-bottom: 6px; }
+    .sentiment-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+    .sentiment-player { display: flex; align-items: center; gap: 8px; }
+    .sentiment-avatar { width: 28px; height: 28px; border-radius: 50%; overflow: hidden; flex-shrink: 0; box-shadow: 0 0 0 2px var(--tc, #ccc); }
+    .sentiment-avatar img { width: 28px; height: 28px; object-fit: cover; object-position: top center; background: #e8ecf4; }
+    .sentiment-name { font-size: 13px; font-weight: 700; color: var(--text); }
+    .sentiment-badge { font-size: 12px; font-weight: 700; border-radius: 20px; padding: 4px 10px; flex-shrink: 0; }
+    .sentiment-badge.agree { background: #DCFCE7; color: #15803D; }
+    .sentiment-badge.bold  { background: #FFFBEB; color: #B45309; }
+    .rbar-footer { display: flex; justify-content: center; align-items: center; }
     .rbar-picks { font-size: 11px; font-weight: 600; color: var(--dim); }
-    .rbar-agree { font-size: 11px; font-weight: 700; color: #16A34A; }
-    .rbar-bold  { font-size: 11px; font-weight: 700; color: #EA580C; }
 
-
-    /* ══════════════════════════════════════
-       DONE SCREEN
-    ══════════════════════════════════════ */
+    /* Done screen */
     .done-card { background: #fff; border-radius: 8px; overflow: hidden; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 2px 8px rgba(0,0,0,0.06); height: 386px; display: flex; flex-direction: column; }
     .done-picks { padding: 14px 14px 12px; border-bottom: 1px solid rgba(0,0,0,0.07); flex: 1; }
     .done-picks-label { font-size: 12px; font-weight: 700; color: var(--dim); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.4px; }
@@ -493,14 +342,8 @@
     .done-cta { width: 100%; padding: 14px 16px; background: linear-gradient(135deg, var(--purple-light), var(--purple)); color: #fff; border: none; font-size: 15px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: opacity 0.15s; margin-top: auto; }
     .done-cta:active { opacity: 0.85; }
 
-    /* ══════════════════════════════════════
-       AD BANNER
-    ══════════════════════════════════════ */
-    .ad-banner {
-      margin: 4px 14px; background: var(--card);
-      border-radius: 12px; border: 1px solid rgba(0,0,0,0.07);
-      padding: 10px 14px; display: flex; align-items: center; gap: 10px;
-    }
+    /* Ad banner */
+    .ad-banner { margin: 4px 14px; background: var(--card); border-radius: 12px; border: 1px solid rgba(0,0,0,0.07); padding: 10px 14px; display: flex; align-items: center; gap: 10px; }
     .ad-icon { font-size: 24px; flex-shrink: 0; }
     .ad-body { flex: 1; }
     .ad-label { font-size: 9px; font-weight: 600; color: #9CA3AF; letter-spacing: 0.4px; margin-bottom: 2px; }
@@ -508,29 +351,14 @@
     .ad-sub { font-size: 11px; color: var(--dim); }
     .ad-cta { font-size: 11px; font-weight: 700; color: var(--purple); flex-shrink: 0; }
 
-    /* ══════════════════════════════════════
-       LIVE MATCHUP (Yi Sport Friendly)
-    ══════════════════════════════════════ */
-    .live-card {
-      margin: 8px 14px 4px; background: var(--card);
-      border-radius: 14px; border: 1px solid rgba(0,0,0,0.07);
-      overflow: hidden; box-shadow: 0 1px 4px rgba(0,8,21,0.06);
-    }
-    .live-hdr {
-      padding: 10px 14px 8px; display: flex; align-items: center;
-      gap: 6px; border-bottom: 1px solid rgba(0,0,0,0.07);
-    }
+    /* Live card */
+    .live-card { margin: 8px 14px 4px; background: var(--card); border-radius: 14px; border: 1px solid rgba(0,0,0,0.07); overflow: hidden; box-shadow: 0 1px 4px rgba(0,8,21,0.06); }
+    .live-hdr { padding: 10px 14px 8px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid rgba(0,0,0,0.07); }
     .live-hdr-icon { font-size: 16px; }
     .live-hdr-title { font-size: 13px; font-weight: 700; color: var(--text); flex: 1; }
-    .live-badge {
-      background: #EF4444; color: #fff; font-size: 9px; font-weight: 900;
-      padding: 2px 8px; border-radius: 999px; letter-spacing: 0.5px;
-    }
+    .live-badge { background: #EF4444; color: #fff; font-size: 9px; font-weight: 900; padding: 2px 8px; border-radius: 999px; letter-spacing: 0.5px; }
     .live-body { padding: 10px 14px; }
-    .live-teams-row {
-      display: flex; align-items: flex-start;
-      justify-content: space-between; margin-bottom: 10px;
-    }
+    .live-teams-row { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
     .live-team { display: flex; flex-direction: column; gap: 2px; }
     .live-team.right { align-items: flex-end; }
     .live-team-name { font-size: 10px; font-weight: 700; color: var(--dim); text-transform: uppercase; letter-spacing: 0.3px; }
@@ -547,47 +375,26 @@
     .live-tab { flex: 1; text-align: center; padding: 10px 0; font-size: 12px; font-weight: 700; color: var(--dim); cursor: pointer; }
     .live-tab.active { color: var(--purple); border-bottom: 2px solid var(--purple); }
 
-    /* ══════════════════════════════════════
-       DRAFT MODULE
-    ══════════════════════════════════════ */
-    .draft-card {
-      margin: 8px 14px 4px; background: var(--card);
-      border-radius: 14px; border: 1px solid rgba(0,0,0,0.07);
-      overflow: hidden; box-shadow: 0 1px 4px rgba(0,8,21,0.06);
-    }
+    /* Draft module */
+    .draft-card { margin: 8px 14px 4px; background: var(--card); border-radius: 14px; border: 1px solid rgba(0,0,0,0.07); overflow: hidden; box-shadow: 0 1px 4px rgba(0,8,21,0.06); }
     .draft-hdr { padding: 10px 14px 8px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid rgba(0,0,0,0.07); }
     .draft-hdr-icon { font-size: 16px; }
     .draft-hdr-title { font-size: 13px; font-weight: 700; color: var(--text); flex: 1; }
     .draft-body { padding: 10px 14px; }
     .draft-team-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
     .draft-team-icon { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--purple), #d946ef); display: flex; align-items: center; justify-content: center; font-size: 16px; }
-    .draft-team-info { }
     .draft-team-name { font-size: 13px; font-weight: 800; color: var(--text); }
     .draft-status { font-size: 11px; color: var(--dim); font-weight: 500; }
     .draft-btns { display: flex; gap: 8px; }
-    .draft-btn {
-      flex: 1; padding: 9px 12px; border-radius: 999px; font-size: 12px; font-weight: 700;
-      font-family: inherit; cursor: pointer; border: none; text-align: center;
-      display: flex; align-items: center; justify-content: center; gap: 5px;
-    }
+    .draft-btn { flex: 1; padding: 9px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; font-family: inherit; cursor: pointer; border: none; text-align: center; display: flex; align-items: center; justify-content: center; gap: 5px; }
     .draft-btn.primary { background: linear-gradient(161deg, #e24d9c, #7d2eff); color: #fff; }
     .draft-btn.secondary { background: rgba(125,46,255,0.08); color: var(--purple); border: 1px solid rgba(125,46,255,0.2); }
     .draft-btn-icon { font-size: 10px; }
 
-    /* ══════════════════════════════════════
-       DAILY DRAW
-    ══════════════════════════════════════ */
-    .draw-card {
-      margin: 8px 14px 4px;
-      background: linear-gradient(135deg, #1a0a3a 0%, #0d1a40 100%);
-      border-radius: 14px; overflow: hidden;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-    }
+    /* Daily Draw */
+    .draw-card { margin: 8px 14px 4px; background: linear-gradient(135deg, #1a0a3a 0%, #0d1a40 100%); border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
     .draw-section-label { padding: 10px 14px 0; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.5px; text-transform: uppercase; }
-    .draw-teams-row {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 8px 14px 4px;
-    }
+    .draw-teams-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 14px 4px; }
     .draw-team { display: flex; flex-direction: column; align-items: center; gap: 3px; }
     .draw-team-logo { width: 44px; height: 44px; object-fit: contain; }
     .draw-abbr { font-size: 12px; font-weight: 800; color: rgba(255,255,255,0.9); }
@@ -596,48 +403,20 @@
     .draw-time { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.55); letter-spacing: 0.3px; }
     .draw-vs { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.4); }
     .draw-cta-row { padding: 4px 14px 12px; }
-    .draw-cta {
-      width: 100%; padding: 11px 16px;
-      background: rgba(255,255,255,0.1); color: #fff;
-      border: 1px solid rgba(255,255,255,0.18); border-radius: 10px;
-      font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-    }
+    .draw-cta { width: 100%; padding: 11px 16px; background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.18); border-radius: 10px; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
 
-    /* ══════════════════════════════════════
-       TOP FANTASY NEWS
-    ══════════════════════════════════════ */
-    .news-scroll {
-      display: flex; gap: 10px; padding: 4px 14px 10px;
-      overflow-x: auto; scrollbar-width: none;
-    }
+    /* News */
+    .news-scroll { display: flex; gap: 10px; padding: 4px 14px 10px; overflow-x: auto; scrollbar-width: none; }
     .news-scroll::-webkit-scrollbar { display: none; }
-    .news-card-item {
-      flex-shrink: 0; width: 132px; border-radius: 10px;
-      overflow: hidden; background: var(--card);
-      border: 1px solid rgba(0,0,0,0.07);
-    }
-    .news-img {
-      width: 132px; height: 88px;
-      object-fit: cover; object-position: top center;
-      background: #e5e7eb; display: block;
-    }
+    .news-card-item { flex-shrink: 0; width: 132px; border-radius: 10px; overflow: hidden; background: var(--card); border: 1px solid rgba(0,0,0,0.07); }
+    .news-img { width: 132px; height: 88px; object-fit: cover; object-position: top center; background: #e5e7eb; display: block; }
     .news-text { padding: 6px 8px 8px; }
     .news-headline { font-size: 11px; font-weight: 700; color: var(--text); line-height: 1.35; }
-    .news-byline { font-size: 10px; color: var(--dim); margin-top: 3px; }
 
-    /* ══════════════════════════════════════
-       PLAY NOW
-    ══════════════════════════════════════ */
-    .games-row {
-      display: flex; gap: 10px; padding: 4px 14px 10px;
-      overflow-x: auto; scrollbar-width: none;
-    }
+    /* Play Now */
+    .games-row { display: flex; gap: 10px; padding: 4px 14px 10px; overflow-x: auto; scrollbar-width: none; }
     .games-row::-webkit-scrollbar { display: none; }
-    .game-card {
-      flex-shrink: 0; width: 176px; border-radius: 14px;
-      overflow: hidden; background: #0f172a;
-    }
+    .game-card { flex-shrink: 0; width: 176px; border-radius: 14px; overflow: hidden; background: #0f172a; }
     .game-card-inner { padding: 12px 14px 0; }
     .game-sport { font-size: 40px; font-weight: 900; color: rgba(255,255,255,0.07); line-height: 1; }
     .game-title { font-size: 16px; font-weight: 900; color: #fff; margin-top: 2px; }
@@ -655,25 +434,14 @@
     .game-pick-label { font-size: 13px; font-weight: 800; color: #fff; margin-top: 1px; }
     .game-pick-cta { width: 100%; padding: 9px; background: var(--purple); color: #fff; border: none; font-size: 12px; font-weight: 700; cursor: pointer; font-family: inherit; }
 
-    /* ══════════════════════════════════════
-       BOTTOM NAV
-    ══════════════════════════════════════ */
-    .bottom-nav {
-      position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
-      width: 100%; max-width: 430px;
-      background: rgba(255,255,255,0.94);
-      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-      border-top: 1px solid rgba(0,0,0,0.08);
-      display: flex; padding: 8px 0 16px; z-index: 200;
-    }
+    /* Bottom nav */
+    .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 430px; background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid rgba(0,0,0,0.08); display: flex; padding: 8px 0 16px; z-index: 200; }
     .nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; }
     .nav-icon { font-size: 20px; }
     .nav-lbl { font-size: 10px; font-weight: 600; color: var(--dim); }
     .nav-item.active .nav-lbl { color: var(--purple); }
 
-    /* ══════════════════════════════════════
-       ONBOARDING SHEET
-    ══════════════════════════════════════ */
+    /* Onboarding sheet */
     .ob-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 500; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; }
     .ob-backdrop.visible { opacity: 1; pointer-events: all; }
     .ob-sheet { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%) translateY(100%); width: 100%; max-width: 430px; background: #fff; border-radius: 20px 20px 0 0; padding: 0 24px 36px; z-index: 501; transition: transform 0.42s cubic-bezier(0.34,1.1,0.64,1); }
@@ -693,28 +461,12 @@
     .ob-title { font-size: 24px; font-weight: 900; color: var(--text); text-align: center; letter-spacing: -0.3px; margin-bottom: 8px; }
     .ob-sub { font-size: 14px; font-weight: 500; color: var(--dim); text-align: center; line-height: 1.5; margin-bottom: 24px; }
     .ob-cta { width: 100%; background: var(--purple); color: #fff; border: none; border-radius: 50px; padding: 16px; font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer; }
-
-    /* ── COACH MARKS ── */
-    .cm-tap-hint { position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%); z-index: 54; opacity: 0; transition: opacity 0.3s; text-align: center; pointer-events: none; }
-    .cm-tap-hint.visible { opacity: 1; }
-    .cm-tap-txt { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); }
-    .cm-callout { position: fixed; z-index: 52; display: flex; align-items: center; gap: 7px; background: rgba(255,255,255,0.12); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; padding: 7px 14px; opacity: 0; transition: opacity 0.35s; pointer-events: none; }
-    .cm-callout.visible { opacity: 1; }
-    .cm-callout-lbl { font-size: 13px; font-weight: 900; color: #fff; letter-spacing: 0.5px; }
-    .cm-callout-arrow { font-size: 16px; color: #fff; }
-    .cm-callout-left  { animation: cmBounceL 1.4s ease-in-out infinite; }
-    .cm-callout-right { animation: cmBounceR 1.4s ease-in-out infinite; }
-    @keyframes cmBounceL { 0%,100%{transform:translateX(0)} 50%{transform:translateX(-6px)} }
-    @keyframes cmBounceR { 0%,100%{transform:translateX(0)} 50%{transform:translateX(6px)} }
-    .cm-hand { position: fixed; font-size: 32px; z-index: 53; pointer-events: none; transition: opacity 0.25s; }
   </style>
 </head>
 <body>
 
-<!-- STATUS BAR -->
 <div class="status-bar"><span>9:41</span><span style="display:flex;gap:5px;align-items:center;font-size:11px;">▐▌▌ 🔋</span></div>
 
-<!-- HEADER -->
 <div class="header">
   <div class="header-bar">
     <div class="header-avatar">🏈</div>
@@ -734,10 +486,8 @@
   </div>
 </div>
 
-<!-- FEED -->
 <div class="feed">
 
-  <!-- Promo row -->
   <div class="promo-row">
     <div class="promo-card">
       <div class="promo-lbl">NFL Pick'em</div>
@@ -751,7 +501,6 @@
     </div>
   </div>
 
-  <!-- My Teams -->
   <div class="section-hdr">
     <div class="section-title">My Teams</div>
     <button class="optimize-btn">✦ Optimize Lineups</button>
@@ -807,37 +556,28 @@
     </div>
     <div class="stack-wrap" id="stackWrap"></div>
     <div class="poll-below" id="pollBelow">
-    <div class="swipe-hint-text" id="swipeHintText">Swipe to pick — live results will appear here</div>
-    <div class="result-bar-wrap" id="resultBarWrap">
-      <div class="result-bar-inner">
-        <div class="rbar-prev-label">Previous pick</div>
-        <div class="rbar-split">
-          <div class="rbar-left" id="rbarLeft" style="width:50%">
-            <span class="rbar-player-name" id="rbarNameLeft">—</span>
-            <span class="rbar-pct-inside" id="rbarPctLeft">—</span>
+      <div class="swipe-hint-text" id="swipeHintText">Swipe to pick — live results will appear here</div>
+      <div class="result-bar-wrap" id="resultBarWrap">
+        <div class="result-bar-inner">
+          <div class="rbar-prev-label">Previous pick</div>
+          <div class="sentiment-row">
+            <div class="sentiment-player">
+              <div class="sentiment-avatar" id="sentimentAvatar">
+                <img id="sentimentPhoto" src="" alt="">
+              </div>
+              <span class="sentiment-name" id="sentimentName">—</span>
+            </div>
+            <div class="sentiment-badge" id="sentimentBadge">—</div>
           </div>
-          <div class="rbar-right" id="rbarRight">
-            <span class="rbar-pct-inside rbar-pct-dim" id="rbarPctRight">—</span>
-            <span class="rbar-player-name" id="rbarNameRight">—</span>
-          </div>
-        </div>
-        <div class="rbar-footer">
-          <span class="rbar-picks" id="rbarPicks">—</span>
-          <span id="rbarAgree" class="rbar-agree">—</span>
-        </div>
-        <div class="rbar-lock" id="rbarLock">
-          <div class="rbar-lock-badge">
-            <span class="rbar-lock-icon">🔒</span>
-            <span class="rbar-lock-label">Unlock with Fantasy+</span>
+          <div class="rbar-footer">
+            <span class="rbar-picks" id="rbarPicks">—</span>
           </div>
         </div>
       </div>
     </div>
-    </div><!-- end poll-below -->
   </div>
   <!-- ══ END COMMUNITY POLL ══ -->
 
-  <!-- Ad banner -->
   <div class="ad-banner">
     <div class="ad-icon">👕</div>
     <div class="ad-body">
@@ -847,10 +587,6 @@
     <div class="ad-cta">Shop →</div>
   </div>
 
-  <!-- Yi Sport Friendly (live matchup) -->
-  <div class="section-hdr" style="padding-top:8px;">
-    <div></div>
-  </div>
   <div class="live-card">
     <div class="live-hdr">
       <span class="live-hdr-icon">🏈</span>
@@ -883,7 +619,6 @@
     </div>
   </div>
 
-  <!-- Draft module -->
   <div class="draft-card">
     <div class="draft-hdr">
       <span class="draft-hdr-icon">🎯</span>
@@ -892,7 +627,7 @@
     <div class="draft-body">
       <div class="draft-team-row">
         <div class="draft-team-icon">👻</div>
-        <div class="draft-team-info">
+        <div>
           <div class="draft-team-name">FRIGHT NIGHT LIGHTS</div>
           <div class="draft-status">Offline Draft</div>
         </div>
@@ -904,7 +639,6 @@
     </div>
   </div>
 
-  <!-- Daily Draw -->
   <div class="section-hdr"><div class="section-title">Daily Draw</div><div class="section-link">View All</div></div>
   <div class="draw-card">
     <div class="draw-section-label">NFL · SUN · WEEK 14</div>
@@ -929,36 +663,26 @@
     </div>
   </div>
 
-  <!-- Top Fantasy News -->
   <div class="section-hdr"><div class="section-title">Top Fantasy News</div><div class="section-link">View All ›</div></div>
   <div class="news-scroll">
     <div class="news-card-item">
       <img class="news-img" src="https://a.espncdn.com/i/headshots/nfl/players/full/3918298.png" alt="">
-      <div class="news-text">
-        <div class="news-headline">6 Fantasy Football Superstars for 2026 Draft Boards</div>
-      </div>
+      <div class="news-text"><div class="news-headline">6 Fantasy Football Superstars for 2026 Draft Boards</div></div>
     </div>
     <div class="news-card-item">
       <img class="news-img" src="https://a.espncdn.com/i/headshots/nfl/players/full/3139477.png" alt="">
-      <div class="news-text">
-        <div class="news-headline">Insights from NFL playoffs for 2026 Fantasy</div>
-      </div>
+      <div class="news-text"><div class="news-headline">Insights from NFL playoffs for 2026 Fantasy</div></div>
     </div>
     <div class="news-card-item">
       <img class="news-img" src="https://a.espncdn.com/i/headshots/nfl/players/full/3929630.png" alt="">
-      <div class="news-text">
-        <div class="news-headline">Pickups and start advice for Week 1</div>
-      </div>
+      <div class="news-text"><div class="news-headline">Pickups and start advice for Week 1</div></div>
     </div>
     <div class="news-card-item">
       <img class="news-img" src="https://a.espncdn.com/i/headshots/nfl/players/full/4241389.png" alt="">
-      <div class="news-text">
-        <div class="news-headline">WR rankings — who to start this week</div>
-      </div>
+      <div class="news-text"><div class="news-headline">WR rankings — who to start this week</div></div>
     </div>
   </div>
 
-  <!-- Play Now -->
   <div class="section-hdr"><div class="section-title">Play Now</div><div class="section-link">View All Games ›</div></div>
   <div class="games-row">
     <div class="game-card">
@@ -991,9 +715,8 @@
     </div>
   </div>
 
-</div><!-- end feed -->
+</div>
 
-<!-- Onboarding -->
 <div class="ob-backdrop" id="obBackdrop"></div>
 <div class="ob-sheet" id="obSheet">
   <div class="ob-handle"></div>
@@ -1011,7 +734,6 @@
   <button class="ob-cta" id="obCta">Let's vote</button>
 </div>
 
-<!-- Bottom Nav -->
 <div class="bottom-nav">
   <div class="nav-item active"><div class="nav-icon">🏠</div><div class="nav-lbl">Home</div></div>
   <div class="nav-item"><div class="nav-icon">🎮</div><div class="nav-lbl">Games</div></div>
@@ -1062,6 +784,7 @@ let idx = 0, decisions = [], totalDecisions = 0;
 let isDragging = false, startX = 0, curX = 0, velX = 0, lastX = 0;
 let frontCard = null, liveVoteInterval = null, currentVotes = 0;
 let lastResult = null;
+let hintShown = false; // swipe hint overlay only shows on the very first card
 
 const espnHeadshot = id   => `https://a.espncdn.com/i/headshots/nfl/players/full/${id}.png`;
 const espnLogo     = abbr => `https://a.espncdn.com/i/teamlogos/nfl/500/${abbr.toLowerCase()}.png`;
@@ -1120,8 +843,7 @@ function buildProgressRing(remaining) {
     <svg width="28" height="28" viewBox="0 0 28 28" style="transform:rotate(-90deg)">
       <circle cx="14" cy="14" r="${r}" fill="none" stroke="${trackColor}" stroke-width="2.5"/>
       <circle cx="14" cy="14" r="${r}" fill="none" stroke="${fillColor}" stroke-width="2.5"
-        stroke-dasharray="${circ}" stroke-dashoffset="${offset}"
-        stroke-linecap="round"/>
+        stroke-dasharray="${circ}" stroke-dashoffset="${offset}" stroke-linecap="round"/>
     </svg>
     <span class="ring-num">${remaining}</span>
   </div>`;
@@ -1166,6 +888,12 @@ function buildCard(player, cls, remaining) {
         </div>
       </div>
       <div class="or-circle" id="orCircle_${player.id}">or</div>
+      ${cls === 'front' && !hintShown ? `
+      <div class="swipe-hint-overlay" id="swipeOverlay_${player.id}">
+        <span class="hint-finger-l">👈</span>
+        <span class="hint-label">Swipe to pick</span>
+        <span class="hint-finger-r">👉</span>
+      </div>` : ''}
       <div class="player-half rh" id="rh_${player.id}">
         <div class="half-bg" style="background:linear-gradient(200deg,${rDark} 0%,${rDeep} 100%)"></div>
         <img class="half-logo" src="${espnLogo(player.right.logo)}" alt="">
@@ -1210,7 +938,6 @@ function renderStack() {
   const rem = PLAYERS.slice(idx);
   if (!rem.length) { showDoneScreen(area); return; }
 
-  // Render up to 3 real player cards — back cards show actual players
   const cls = ['front', 'back-1', 'back-2'];
   for (let i = Math.min(2, rem.length - 1); i >= 0; i--) {
     area.appendChild(buildCard(rem[i], cls[i], rem.length - i));
@@ -1303,6 +1030,13 @@ function attachDrag(card) {
     const t = e.touches ? e.touches[0] : e;
     startX = t.clientX; curX = 0; velX = 0; lastX = startX;
     card.style.transition = 'none';
+    // Dismiss swipe hint overlay on first touch — one-time only
+    const overlay = card.querySelector('.swipe-hint-overlay');
+    if (overlay) {
+      hintShown = true;
+      overlay.classList.add('gone');
+      setTimeout(() => overlay.remove(), 300);
+    }
   };
   const onMove = e => {
     if (!isDragging) return;
@@ -1346,7 +1080,6 @@ function commitSwipe(dir) {
   frontCard.style.transition = 'transform 0.40s cubic-bezier(0.4,0,0.2,1), opacity 0.36s ease';
   frontCard.style.transform  = `translateX(${flyX}px) rotate(${dir==='right'?18:-18}deg)`;
   frontCard.style.opacity    = '0';
-  // Slide back cards up — translateY only, no width change, no expansion
   const b1 = document.querySelector('.swipe-card.back-1');
   const b2 = document.querySelector('.swipe-card.back-2');
   if (b1) { b1.style.transition = 'transform 0.3s cubic-bezier(0.34,1.2,0.64,1)'; b1.style.transform = 'translateY(0)'; }
@@ -1361,80 +1094,22 @@ function commitSwipe(dir) {
 
 function showResultBar(player, chosen, benched, chosenPct) {
   const wrap = document.getElementById('resultBarWrap');
-  const leftPct = player.lPct, rightPct = 100 - player.lPct;
-  const leftWon = chosen.last === player.left.last;
-  const votes   = fmtVotes(player.baseVotes + totalDecisions * 47);
-  document.getElementById('rbarNameLeft').textContent  = abbr(player.left);
-  document.getElementById('rbarNameRight').textContent = abbr(player.right);
-  const lEl = document.getElementById('rbarLeft'), rEl = document.getElementById('rbarRight');
-  lEl.style.background = leftWon ? player.left.color : hexToRgba(player.left.color, 0.55);
-  rEl.style.background = leftWon ? hexToRgba(player.right.color, 0.55) : player.right.color;
-  lEl.style.width = leftPct + '%';
-  document.getElementById('rbarPctLeft').textContent  = leftPct + '%';
-  document.getElementById('rbarPctRight').textContent = rightPct + '%';
+  const votes = fmtVotes(player.baseVotes + totalDecisions * 47);
+  const avatarEl = document.getElementById('sentimentAvatar');
+  avatarEl.style.setProperty('--tc', chosen.color);
+  document.getElementById('sentimentPhoto').src = espnHeadshot(chosen.espnId);
+  document.getElementById('sentimentName').textContent = abbr(chosen);
+  const badge = document.getElementById('sentimentBadge');
+  if (chosenPct >= 50) {
+    badge.className = 'sentiment-badge agree';
+    badge.textContent = '✓ With the crowd';
+  } else {
+    badge.className = 'sentiment-badge bold';
+    badge.textContent = '🔥 Bold pick';
+  }
   document.getElementById('rbarPicks').textContent = `${votes} picks`;
-  const agreeEl = document.getElementById('rbarAgree');
-  agreeEl.className = chosenPct >= 50 ? 'rbar-agree' : 'rbar-bold';
-  agreeEl.textContent = chosenPct >= 50 ? `${chosenPct}% of players agree` : `Bold pick — only ${chosenPct}% agree`;
   wrap.classList.add('visible');
 }
-
-// Coach marks
-(function() {
-  let dismissed = false;
-  function dismiss() {
-    if (dismissed) return; dismissed = true;
-    [calloutL, calloutR, hand, tapHint].forEach(el => { el.style.opacity='0'; el.style.pointerEvents='none'; });
-    setTimeout(() => [calloutL, calloutR, hand, tapHint].forEach(el => el.remove()), 400);
-  }
-  setTimeout(() => {
-    const stackEl = document.getElementById('stackWrap');
-    const r = stackEl.getBoundingClientRect();
-    const fp = PLAYERS[0];
-    calloutL = document.createElement('div'); calloutL.className = 'cm-callout cm-callout-left';
-    calloutL.innerHTML = `<span class="cm-callout-arrow">←</span><span class="cm-callout-lbl">Vote ${fp.left.last}</span>`;
-    const cY = r.top + r.height/2 - 18;
-    calloutL.style.cssText = `top:${cY}px;left:${r.left+12}px;`;
-    document.body.appendChild(calloutL);
-    calloutR = document.createElement('div'); calloutR.className = 'cm-callout cm-callout-right';
-    calloutR.innerHTML = `<span class="cm-callout-lbl">Vote ${fp.right.last}</span><span class="cm-callout-arrow">→</span>`;
-    calloutR.style.cssText = `top:${cY}px;right:${window.innerWidth-r.right+12}px;`;
-    document.body.appendChild(calloutR);
-    tapHint = document.createElement('div'); tapHint.className = 'cm-tap-hint';
-    tapHint.innerHTML = '<div class="cm-tap-txt">Swipe to cast your vote</div>';
-    document.body.appendChild(tapHint);
-    hand = document.createElement('div'); hand.className = 'cm-hand'; hand.textContent = '👆';
-    const hX = r.left+r.width/2-16, hY = r.top+r.height/2+10;
-    hand.style.cssText = `top:${hY}px;left:${hX}px;`;
-    document.body.appendChild(hand);
-    const dist = r.width*0.38, dur = 520;
-    function ease(t) { return t<0.5 ? 2*t*t : -1+(4-2*t)*t; }
-    function animateTo(fx, tx, rot, cb) {
-      const s = performance.now();
-      (function tick(now) {
-        const p = Math.min((now-s)/dur,1), e = ease(p);
-        hand.style.left = (fx+e*(tx-fx))+'px';
-        hand.style.transform = `rotate(${e*rot}deg)`;
-        if (p<1) requestAnimationFrame(tick); else cb();
-      })(s);
-    }
-    setTimeout(() => {
-      animateTo(hX, hX+dist, 12, () => {
-        hand.style.opacity='0';
-        setTimeout(() => {
-          hand.style.left=hX+'px'; hand.style.transform='rotate(0deg)'; hand.style.opacity='1';
-          animateTo(hX, hX-dist, -12, () => {
-            hand.style.opacity='0';
-            setTimeout(() => { calloutL.classList.add('visible'); calloutR.classList.add('visible'); tapHint.classList.add('visible'); }, 200);
-          });
-        }, 300);
-      });
-    }, 500);
-    document.addEventListener('mousedown', dismiss, {once:true});
-    document.addEventListener('touchstart', dismiss, {once:true, passive:true});
-  }, 350);
-  var calloutL, calloutR, hand, tapHint;
-})();
 
 // Onboarding
 (function() {

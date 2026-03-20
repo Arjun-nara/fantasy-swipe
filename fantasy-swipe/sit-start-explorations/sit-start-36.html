@@ -286,7 +286,7 @@
 
     /* Chin bar */
     .card-btm { background: #fff; height: 36px; display: flex; align-items: center; justify-content: space-between; padding: 0 8px; }
-    .swipe-hint-left, .swipe-hint-right { display: flex; align-items: center; gap: 2px; font-size: 10px; font-weight: 500; color: #61697c; flex: 1; }
+    .swipe-hint-left, .swipe-hint-right { display: flex; align-items: center; gap: 2px; font-size: 10px; font-weight: 500; color: #61697c; flex: 1; cursor: pointer; }
     .swipe-hint-left { justify-content: flex-start; }
     .swipe-hint-right { justify-content: flex-end; }
     .chin-chevron { font-size: 11px; color: #61697c; line-height: 1; }
@@ -346,6 +346,7 @@
     .done-bold-matchup .bold-over { color: var(--dim); font-weight: 500; font-size: 13px; }
     .done-bold-stat { font-size: 12px; color: var(--dim); margin-top: 1px; }
     .done-chip.is-bold { border-color: #FDE68A; background: #FFFBEB; }
+    .bold-call-pill { font-size: 9px; font-weight: 800; background: #FDE68A; color: #92400E; border-radius: 4px; padding: 2px 5px; letter-spacing: 0.4px; text-transform: uppercase; flex-shrink: 0; }
     .done-cta { width: 100%; padding: 14px 16px; background: linear-gradient(135deg, var(--purple-light), var(--purple)); color: #fff; border: none; font-size: 15px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: opacity 0.15s; margin-top: auto; }
     .done-cta:active { opacity: 0.85; }
 
@@ -822,7 +823,7 @@ const PAGE_SIZE = 6;
 let pageStart = 0;
 let PLAYERS = CARD_POOL.slice(0, PAGE_SIZE);
 let idx = 0, decisions = [], totalDecisions = 0;
-let isDragging = false, startX = 0, curX = 0, velX = 0, lastX = 0;
+let isDragging = false, startX = 0, startY = 0, curX = 0, velX = 0, lastX = 0, lockAxis = null;
 let frontCard = null, liveVoteInterval = null, currentVotes = 0;
 let lastResult = null;
 let hintShown = false; // swipe hint overlay only shows on the very first card
@@ -998,7 +999,7 @@ function showDoneScreen(area) {
         <img class="done-chip-photo" src="${espnHeadshot(d.chosen.espnId)}" onerror="this.style.opacity='0'">
       </div>
       <span class="done-chip-name">${abbr(d.chosen)}</span>
-      ${isBold && d===boldPick ? '<span style="font-size:13px">🔥</span>' : '<span class="done-chip-check">✓</span>'}
+      ${isBold && d===boldPick ? '<span style="font-size:13px">⚡</span>' : '<span class="done-chip-check">✓</span>'}
     </div>`).join('');
 
   const withCrowd = sessionPicks.filter(d => d.chosenPct >= 50).length;
@@ -1010,7 +1011,7 @@ function showDoneScreen(area) {
 
   const boldHTML = isBold ? `
     <div class="done-bold-pick" style="animation-delay:${sessionPicks.length*55+60}ms;opacity:0;transform:translateY(8px);animation:chipIn 0.36s ease both">
-      <div class="done-bold-label">🔥 Bold pick of the session</div>
+      <div class="done-bold-label">⚡ Bold call of the session</div>
       <div class="done-bold-matchup">${abbr(boldPick.chosen)} <span class="bold-over">over</span> ${abbr(boldPick.benched)}</div>
       <div class="done-bold-stat">Only ${boldPick.chosenPct}% agreed with you</div>
     </div>` : '';
@@ -1064,10 +1065,10 @@ function attachDrag(card) {
   const onStart = e => {
     if (card.classList.contains('fly-out')) return;
     isDragging = true;
+    lockAxis = null;
     const t = e.touches ? e.touches[0] : e;
-    startX = t.clientX; curX = 0; velX = 0; lastX = startX;
+    startX = t.clientX; startY = t.clientY; curX = 0; velX = 0; lastX = startX;
     card.style.transition = 'none';
-    // Dismiss swipe hint overlay on first touch — one-time only
     const overlay = card.querySelector('.swipe-hint-overlay');
     if (overlay) {
       hintShown = true;
@@ -1078,6 +1079,12 @@ function attachDrag(card) {
   const onMove = e => {
     if (!isDragging) return;
     const t = e.touches ? e.touches[0] : e;
+    if (!lockAxis) {
+      const dx = Math.abs(t.clientX - startX), dy = Math.abs(t.clientY - startY);
+      if (dx > 4 || dy > 4) lockAxis = dx > dy ? 'h' : 'v';
+    }
+    if (lockAxis === 'v') return;
+    if (e.cancelable) e.preventDefault();
     velX = t.clientX - lastX; lastX = t.clientX; curX = t.clientX - startX;
     card.style.transform = `translateX(${curX}px) translateY(${-Math.abs(curX)*0.025}px) rotate(${curX*0.055}deg)`;
     const ratio = Math.abs(curX) / 55;
@@ -1088,6 +1095,7 @@ function attachDrag(card) {
   const onEnd = () => {
     if (!isDragging) return;
     isDragging = false;
+    lockAxis = null;
     if (curX > 58 || velX > 6) commitSwipe('right');
     else if (curX < -58 || velX < -6) commitSwipe('left');
     else {
@@ -1100,8 +1108,10 @@ function attachDrag(card) {
   document.addEventListener('mousemove', onMove);
   document.addEventListener('mouseup', onEnd);
   card.addEventListener('touchstart', onStart, { passive: true });
-  document.addEventListener('touchmove', onMove, { passive: true });
+  document.addEventListener('touchmove', onMove, { passive: false });
   document.addEventListener('touchend', onEnd);
+  card.querySelector('.swipe-hint-left').addEventListener('click', () => commitSwipe('left'));
+  card.querySelector('.swipe-hint-right').addEventListener('click', () => commitSwipe('right'));
 }
 
 function commitSwipe(dir) {
@@ -1174,6 +1184,9 @@ function showResultBar(player, chosen, benched, chosenPct) {
     sheet.style.transition='transform 0.32s cubic-bezier(0.4,0,0.2,1)';
     sheet.style.transform='translateX(-50%) translateY(100%)';
     backdrop.style.opacity='0'; backdrop.style.pointerEvents='none';
+    setTimeout(() => {
+      document.querySelector('.poll-module').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 350);
   }
   setTimeout(() => { sheet.classList.add('visible'); backdrop.classList.add('visible'); }, 400);
   cta.addEventListener('click', dismiss);
