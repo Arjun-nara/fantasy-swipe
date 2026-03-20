@@ -210,12 +210,12 @@
 
     /* Card body */
     .card-body { display: flex; height: 182px; position: relative; background: #fff; overflow: hidden; }
-    .player-half { flex: 1; position: relative; overflow: hidden; }
+    .player-half { flex: 1; position: relative; }
     .half-bg { position: absolute; inset: 0; z-index: 0; }
     .half-logo { position: absolute; z-index: 2; pointer-events: none; width: 75px; height: 75px; object-fit: contain; opacity: 0.5; bottom: 0; }
     .lh .half-logo { left: 8px; }
     .rh .half-logo { right: 8px; }
-    .p-photo { position: absolute; bottom: 0; width: 115px; height: 152px; object-fit: cover; object-position: top center; filter: drop-shadow(0 2px 10px rgba(0,0,0,0.45)); z-index: 3; transform-origin: bottom center; transition: transform 0.12s ease-out; }
+    .p-photo { position: absolute; bottom: 0; width: 115px; height: 152px; object-fit: cover; object-position: top center; filter: drop-shadow(0 2px 10px rgba(0,0,0,0.45)); z-index: 3; transform-origin: bottom center; }
     .lh .p-photo { right: 0; }
     .rh .p-photo { left: 0; }
     .p-info { position: absolute; top: 0; z-index: 4; padding: 8px 8px 0; max-width: 62%; }
@@ -1126,31 +1126,31 @@ function setSwipeState(card, player, ratio, dir) {
   const lp   = card.querySelector(`#lexpphoto_${player.id}`);
   const rp   = card.querySelector(`#rexpphoto_${player.id}`);
   const orC  = card.querySelector(`#orCircle_${player.id}`);
-  const lPhoto = card.querySelector('.lh .p-photo');
-  const rPhoto = card.querySelector('.rh .p-photo');
   const pct  = Math.round((1 - o) * 100);
   const ps   = 0.75 + o * 0.37;
-  const photoScale = 1 + o * 0.2; // grows from 1.0 → 1.2 at full drag
   if (dir === 'left') {
     lexp.style.opacity = 1; lexp.style.clipPath = `inset(0 ${pct}% 0 0)`;
     rexp.style.opacity = 0; rexp.style.clipPath = '';
     if (lp) lp.style.transform = `scale(${ps})`; if (rp) rp.style.transform = 'scale(0.75)';
-    if (lPhoto) lPhoto.style.transform = `scale(${photoScale})`;
-    if (rPhoto) rPhoto.style.transform = 'scale(1)';
   } else if (dir === 'right') {
     rexp.style.opacity = 1; rexp.style.clipPath = `inset(0 0 0 ${pct}%)`;
     lexp.style.opacity = 0; lexp.style.clipPath = '';
     if (rp) rp.style.transform = `scale(${ps})`; if (lp) lp.style.transform = 'scale(0.75)';
-    if (rPhoto) rPhoto.style.transform = `scale(${photoScale})`;
-    if (lPhoto) lPhoto.style.transform = 'scale(1)';
   } else {
     lexp.style.opacity = 0; lexp.style.clipPath = '';
     rexp.style.opacity = 0; rexp.style.clipPath = '';
     if (lp) lp.style.transform = 'scale(0.75)'; if (rp) rp.style.transform = 'scale(0.75)';
-    if (lPhoto) lPhoto.style.transform = 'scale(1)';
-    if (rPhoto) rPhoto.style.transform = 'scale(1)';
   }
   if (orC) orC.style.opacity = 1 - o * 1.5;
+}
+
+function scalePhotos(card, dir, ratio) {
+  const lPhoto = card.querySelector('.lh .p-photo');
+  const rPhoto = card.querySelector('.rh .p-photo');
+  const s = 1 + Math.min(ratio, 1) * 0.28;
+  if (dir === 'left')  { if (lPhoto) lPhoto.style.transform = `scale(${s})`; if (rPhoto) rPhoto.style.transform = 'scale(1)'; }
+  else if (dir === 'right') { if (rPhoto) rPhoto.style.transform = `scale(${s})`; if (lPhoto) lPhoto.style.transform = 'scale(1)'; }
+  else { if (lPhoto) lPhoto.style.transform = 'scale(1)'; if (rPhoto) rPhoto.style.transform = 'scale(1)'; }
 }
 
 function attachDrag(card) {
@@ -1181,20 +1181,32 @@ function attachDrag(card) {
     velX = t.clientX - lastX; lastX = t.clientX; curX = t.clientX - startX;
     card.style.transform = `translateX(${curX}px) translateY(${-Math.abs(curX)*0.025}px) rotate(${curX*0.055}deg)`;
     const ratio = Math.abs(curX) / 55;
-    if (curX > 12) setSwipeState(card, player, ratio, 'right');
-    else if (curX < -12) setSwipeState(card, player, ratio, 'left');
-    else setSwipeState(card, player, 0, null);
+    if (curX > 12) { setSwipeState(card, player, ratio, 'right'); scalePhotos(card, 'right', ratio); }
+    else if (curX < -12) { setSwipeState(card, player, ratio, 'left'); scalePhotos(card, 'left', ratio); }
+    else { setSwipeState(card, player, 0, null); scalePhotos(card, null, 0); }
   };
   const onEnd = () => {
     if (!isDragging) return;
     isDragging = false;
     lockAxis = null;
-    if (curX > 58 || velX > 6) commitSwipe('right');
-    else if (curX < -58 || velX < -6) commitSwipe('left');
-    else {
+    if (curX > 58 || velX > 6) {
+      // reset photos instantly before fly-out so they don't interfere with result animation
+      const lp = card.querySelector('.lh .p-photo'), rp = card.querySelector('.rh .p-photo');
+      if (lp) lp.style.transform = ''; if (rp) rp.style.transform = '';
+      commitSwipe('right');
+    } else if (curX < -58 || velX < -6) {
+      const lp = card.querySelector('.lh .p-photo'), rp = card.querySelector('.rh .p-photo');
+      if (lp) lp.style.transform = ''; if (rp) rp.style.transform = '';
+      commitSwipe('left');
+    } else {
       card.style.transition = 'transform 0.42s cubic-bezier(0.34,1.56,0.64,1)';
       card.style.transform = '';
       setSwipeState(card, player, 0, null);
+      // smooth snap-back for photos
+      const lp = card.querySelector('.lh .p-photo'), rp = card.querySelector('.rh .p-photo');
+      if (lp) { lp.style.transition = 'transform 0.32s cubic-bezier(0.34,1.56,0.64,1)'; lp.style.transform = ''; }
+      if (rp) { rp.style.transition = 'transform 0.32s cubic-bezier(0.34,1.56,0.64,1)'; rp.style.transform = ''; }
+      setTimeout(() => { if (lp) lp.style.transition = ''; if (rp) rp.style.transition = ''; }, 340);
     }
   };
   card.addEventListener('mousedown', onStart);
